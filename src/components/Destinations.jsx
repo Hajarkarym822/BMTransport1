@@ -31,20 +31,24 @@ const destinations = [
 
 const Destinations = () => {
     return (
-        <section id="destinations" className="py-24 bg-white text-gray-900 border-t border-gray-100">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <section id="destinations" className="relative py-24 bg-white text-gray-900 border-t border-gray-100">
+            <div className="absolute inset-0 pattern-moroccan pointer-events-none"></div>
+            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-                    <div>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 bg-[#1a1a1a] p-10 rounded-3xl shadow-2xl border border-white/10 relative overflow-hidden">
+                    {/* Decorative blurred glow */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+                    <div className="relative z-10">
                         <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px w-8 bg-black"></div>
+                            <div className="h-px w-8 bg-white"></div>
                             <span className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Voyagez partout au Maroc</span>
                         </div>
-                        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">
+                        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
                             Nos Destinations
                         </h2>
                     </div>
-                    <p className="md:max-w-md text-gray-500 font-light border-l border-gray-200 pl-6">
+                    <p className="relative z-10 md:max-w-md text-gray-400 font-light border-l border-gray-700 pl-6">
                         Découvrez le Royaume sous son meilleur jour. Nos chauffeurs experts vous emmènent dans les lieux les plus prestigieux.
                     </p>
                 </div>

@@ -51,3 +51,10 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-gray-300;
 }
+
+.pattern-moroccan {
+    background-image: url('./assets/images/moroccan_pattern.svg');
+    background-size: 300px;
+    background-repeat: repeat;
+    opacity: 0.3;
+}
