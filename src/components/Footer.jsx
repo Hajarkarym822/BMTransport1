@@ -7,15 +7,15 @@ const Footer = () => {
   const { t } = useTranslation();
 
   const links = [
-    { name: "Accueil", href: '/#' },
-    { name: "Véhicules avec chauffeur", href: '/#services' },
-    { name: "Conciergerie", href: '/#services' },
-    { name: "Flotte", href: '/#fleet' },
-    { name: "Destinations", href: '/#destinations' },
-    { name: "Entreprises (B2B)", href: '/#services' },
-    { name: "Avis Clients", href: '/#reviews' },
-    { name: "À Propos", href: '/#about' },
-    { name: "Contact", href: '/#contact' },
+    { name: t('navbar.home'), href: '/#' },
+    { name: t('navbar.items.driver'), href: '/#services' },
+    { name: t('navbar.items.concierge'), href: '/#services' },
+    { name: t('navbar.items.fleet'), href: '/#fleet' },
+    { name: t('navbar.items.destinations'), href: '/#destinations' },
+    { name: t('navbar.items.corporate'), href: '/#services' },
+    { name: t('navbar.items.reviews'), href: '/#reviews' },
+    { name: t('navbar.items.about'), href: '/#about' },
+    { name: t('footer.contact'), href: '/#contact' },
   ];
 
   return (
@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="space-y-8 lg:col-span-1">
             <h2 className="font-serif text-3xl font-black tracking-tight">BM Transport</h2>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs font-light">
-              L'excellence du transport de luxe au Maroc. Chauffeurs privés, conciergerie et expériences sur-mesure.
+              {t('footer.description')}
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 flex items-center justify-center border border-gray-800 rounded-full hover:bg-white hover:text-black transition-all">
@@ -44,7 +44,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="lg:col-span-2 pl-0 lg:pl-16">
-            <h3 className="font-bold uppercase tracking-widest text-xs text-gray-500 mb-8">Navigation</h3>
+            <h3 className="font-bold uppercase tracking-widest text-xs text-gray-500 mb-8">{t('footer.navigation')}</h3>
             <ul className="grid grid-cols-2 gap-y-4 gap-x-8">
               {links.map((item) => (
                 <li key={item.name}>
@@ -58,7 +58,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-bold uppercase tracking-widest text-xs text-gray-500 mb-8">Contact</h3>
+            <h3 className="font-bold uppercase tracking-widest text-xs text-gray-500 mb-8">{t('footer.contact')}</h3>
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
                 <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
@@ -78,11 +78,11 @@ const Footer = () => {
 
         <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-600 text-xs">
-            © {new Date().getFullYear()} BM Transport. Tous droits réservés.
+            © {new Date().getFullYear()} BM Transport. {t('footer.rights')}
           </p>
           <div className="flex gap-8 text-xs text-gray-600">
-            <Link to="/privacy" className="hover:text-white transition-colors">Confidentialité</Link>
-            <Link to="/legal" className="hover:text-white transition-colors">Mentions Légales</Link>
+            <Link to="/privacy" className="hover:text-white transition-colors">{t('footer.privacy')}</Link>
+            <Link to="/legal" className="hover:text-white transition-colors">{t('footer.legal')}</Link>
           </div>
         </div>
       </div>

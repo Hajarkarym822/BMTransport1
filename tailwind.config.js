@@ -16,8 +16,8 @@ export default {
         light: '#F8FAFC',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Plus Jakarta Sans', 'sans-serif'],
+        serif: ['Zabal', 'sans-serif'],
+        sans: ['Zabal', 'sans-serif'],
       },
       animation: {
         blob: "blob 7s infinite",

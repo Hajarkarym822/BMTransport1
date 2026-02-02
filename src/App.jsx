@@ -14,10 +14,13 @@ import Footer from './components/Footer';
 import Privacy from './pages/Privacy';
 import Legal from './pages/Legal';
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
     return (
         <TranslationProvider>
             <Router>
+                <ScrollToTop />
                 <div className="min-h-screen bg-white">
                     <Navbar />
                     <Routes>

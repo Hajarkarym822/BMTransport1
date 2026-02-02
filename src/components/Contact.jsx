@@ -56,98 +56,118 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white relative text-gray-900 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-20">
+    <section id="contact" className="relative py-24 bg-[#F2F2F0] text-gray-900 border-t border-gray-200 overflow-hidden">
 
-          {/* Contact Info */}
-          <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="h-px w-8 bg-black"></div>
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Contactez-nous</span>
+      {/* Decorative ambient blobs & Pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+      <div className="absolute top-0 right-0 w-1/3 h-64 bg-white/40 blur-3xl rounded-full transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-1/4 h-64 bg-gray-300/20 blur-3xl rounded-full transform -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+
+        {/* Header Box Premium */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative bg-[#1A1A1A] rounded-[2.5rem] p-10 md:p-14 mb-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-10 overflow-hidden shadow-2xl"
+        >
+          {/* Decorative Glare */}
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-white/5 blur-3xl rounded-full pointer-events-none"></div>
+
+          <div className="relative z-10 w-full md:w-3/5">
+            <div className="flex items-center gap-4 mb-5">
+              <div className="w-12 h-[1px] bg-white"></div>
+              <span className="text-gray-400 font-bold tracking-[0.2em] uppercase text-xs">Contactez-nous</span>
             </div>
-
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-8 leading-tight">
+            <h2 className="font-serif text-5xl md:text-6xl lg:text-[4rem] font-black text-white leading-[0.95]">
               {t('contact.heading')}
             </h2>
-
-            <p className="text-lg text-gray-500 mb-12 leading-relaxed font-light border-l-2 border-gray-100 pl-6">
-              {t('contact.description')}
-            </p>
-
-            <div className="space-y-8">
-              <div className="flex items-center gap-6 group">
-                <div className="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-full group-hover:bg-black group-hover:text-white transition-colors duration-500">
-                  <Phone size={20} strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h5 className="font-bold text-gray-900 mb-1 text-sm tracking-wide uppercase">{t('contact.info.phone')}</h5>
-                  <p className="font-serif text-xl">+212 668-139858</p>
-                  <p className="font-serif text-xl">+212 661-711423</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-6 group">
-                <div className="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-full group-hover:bg-black group-hover:text-white transition-colors duration-500">
-                  <Mail size={20} strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h5 className="font-bold text-gray-900 mb-1 text-sm tracking-wide uppercase">{t('contact.info.email')}</h5>
-                  <p className="text-gray-600">bamustapha70@gmail.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-6 group">
-                <div className="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-full group-hover:bg-black group-hover:text-white transition-colors duration-500">
-                  <MapPin size={20} strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h5 className="font-bold text-gray-900 mb-1 text-sm tracking-wide uppercase">{t('contact.info.address')}</h5>
-                  <p className="text-gray-600">Casablanca, Maroc</p>
-                </div>
-              </div>
-            </div>
           </div>
 
+          <div className="relative z-10 w-full md:w-2/5 md:border-l md:border-white/10 md:pl-10">
+            <p className="text-gray-400 text-lg leading-relaxed font-light">
+              {t('contact.description')}
+            </p>
+          </div>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-20">
+
+          {/* Contact Info (List Only) */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col justify-center"
+          >
+
+            <div className="space-y-8">
+              {[
+                { icon: Phone, title: t('contact.info.phone'), content: <><p className="font-serif text-xl text-[#1A1A1A]">+212 668-139858</p><p className="font-serif text-xl text-[#1A1A1A]">+212 661-711423</p></> },
+                { icon: Mail, title: t('contact.info.email'), content: <p className="text-gray-600 font-medium">bamustapha70@gmail.com</p> },
+                { icon: MapPin, title: t('contact.info.address'), content: <p className="text-gray-600 font-medium">Casablanca, Maroc</p> }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-6 group">
+                  <div className="w-14 h-14 flex items-center justify-center bg-white rounded-full shadow-sm group-hover:bg-black group-hover:text-white transition-colors duration-500">
+                    <item.icon size={22} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-gray-400 mb-1 text-xs tracking-widest uppercase">{item.title}</h5>
+                    {item.content}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Contact Form */}
-          <div className="bg-gray-50 p-8 md:p-12 lg:p-16 relative">
-            <h3 className="font-serif text-3xl font-bold text-gray-900 mb-8">{t('contact.form.title')}</h3>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="bg-white p-8 md:p-12 lg:p-16 relative rounded-[2.5rem] shadow-xl"
+          >
+            <h3 className="font-serif text-3xl font-bold text-[#1A1A1A] mb-8">{t('contact.form.title')}</h3>
 
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t('contact.form.name')}</label>
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('contact.form.name')}</label>
                   <input
                     type="text"
                     name="user_name"
                     required
                     value={formData.user_name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white border-b border-gray-200 focus:border-black outline-none transition-all placeholder-gray-300"
+                    className="w-full px-4 py-3 bg-[#F9F9F9] rounded-xl border border-transparent focus:bg-white focus:border-black outline-none transition-all placeholder-gray-300 font-medium"
                     placeholder="Votre nom"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t('contact.form.email')}</label>
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('contact.form.email')}</label>
                   <input
                     type="email"
                     name="user_email"
                     required
                     value={formData.user_email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white border-b border-gray-200 focus:border-black outline-none transition-all placeholder-gray-300"
+                    className="w-full px-4 py-3 bg-[#F9F9F9] rounded-xl border border-transparent focus:bg-white focus:border-black outline-none transition-all placeholder-gray-300 font-medium"
                     placeholder="email@exemple.com"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t('contact.form.subject')}</label>
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('contact.form.subject')}</label>
                 <select
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white border-b border-gray-200 focus:border-black outline-none transition-all text-gray-700"
+                  className="w-full px-4 py-3 bg-[#F9F9F9] rounded-xl border border-transparent focus:bg-white focus:border-black outline-none transition-all text-gray-700 font-medium cursor-pointer"
                 >
                   <option value="" disabled>Sélectionnez un sujet</option>
                   {displaySubjects.map((subject, idx) => (
@@ -157,14 +177,14 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t('contact.form.message')}</label>
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('contact.form.message')}</label>
                 <textarea
                   name="message"
                   required
                   rows="4"
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white border-b border-gray-200 focus:border-black outline-none transition-all placeholder-gray-300 resize-none"
+                  className="w-full px-4 py-3 bg-[#F9F9F9] rounded-xl border border-transparent focus:bg-white focus:border-black outline-none transition-all placeholder-gray-300 font-medium resize-none"
                   placeholder="Comment pouvons-nous vous aider ?"
                 ></textarea>
               </div>
@@ -172,7 +192,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={status.loading}
-                className={`w-full py-4 px-8 bg-black text-white font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors flex items-center justify-center gap-3 ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className={`w-full py-4 px-8 bg-black text-white font-bold uppercase tracking-widest hover:bg-gray-800 transition-transform hover:scale-[1.02] rounded-xl flex items-center justify-center gap-3 shadow-lg ${status.loading ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 {status.loading ? (
                   <Loader2 size={18} className="animate-spin" />
@@ -190,7 +210,7 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="p-4 bg-green-50 text-green-800 text-sm font-medium flex items-center gap-2 border border-green-100"
+                    className="p-4 bg-green-50 text-green-800 text-sm font-medium flex items-center gap-2 border border-green-100 rounded-xl"
                   >
                     <CheckCircle size={16} />
                     <span>Message envoyé avec succès. Nous vous répondrons sous peu.</span>
@@ -201,7 +221,7 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="p-4 bg-red-50 text-red-800 text-sm font-medium flex items-center gap-2 border border-red-100"
+                    className="p-4 bg-red-50 text-red-800 text-sm font-medium flex items-center gap-2 border border-red-100 rounded-xl"
                   >
                     <AlertCircle size={16} />
                     <span>Erreur lors de l'envoi. Veuillez réessayer.</span>
@@ -209,7 +229,7 @@ const Contact = () => {
                 )}
               </AnimatePresence>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

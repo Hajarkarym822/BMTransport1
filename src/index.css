@@ -1,4 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+/* Custom Font Declarations - Zabal */
+@font-face {
+    font-family: 'Zabal';
+    src: url('/font/ZabalDEMO-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Zabal';
+    src: url('/font/ZabalDEMO-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Zabal';
+    src: url('/font/ZabalDEMO-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Zabal';
+    src: url('/font/ZabalDEMO-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
 
 @tailwind base;
 @tailwind components;
@@ -10,8 +37,14 @@
         scroll-padding-top: 80px;
     }
 
-    body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
+    html,
+    body,
+    button,
+    input,
+    select,
+    textarea {
+        font-family: 'Zabal', sans-serif;
+        font-weight: 400;
         @apply bg-light text-dark antialiased;
     }
 
@@ -21,7 +54,8 @@
     h4,
     h5,
     h6 {
-        font-family: 'Playfair Display', serif;
+        font-family: 'Zabal', sans-serif;
+        font-weight: 700;
     }
 }
 

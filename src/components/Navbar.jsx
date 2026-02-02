@@ -20,26 +20,26 @@ const Navbar = () => {
     }, []);
 
     const servicesSubmenu = [
-        { name: "Location avec Chauffeur", href: "#services" },
-        { name: "Conciergerie", href: "#services" },
-        { name: "Entreprises & Événements", href: "#services" },
+        { name: t('navbar.items.driver'), href: "#services" },
+        { name: t('navbar.items.concierge'), href: "#services" },
+        { name: t('navbar.items.corporate'), href: "#services" },
     ];
 
     // Full list for Mobile
     const mobileLinks = [
-        { name: 'Accueil', href: '#' },
-        { name: 'Flotte', href: '#fleet' },
-        { name: 'Destinations', href: '#destinations' },
-        { name: 'Avis', href: '#reviews' },
-        { name: 'À Propos', href: '#about' },
-        { name: 'Contact', href: '#contact' },
+        { name: t('navbar.home'), href: '#' },
+        { name: t('navbar.items.fleet'), href: '#fleet' },
+        { name: t('navbar.items.destinations'), href: '#destinations' },
+        { name: t('navbar.items.reviews'), href: '#reviews' },
+        { name: t('navbar.items.about'), href: '#about' },
+        { name: t('navbar.contact'), href: '#contact' },
     ];
 
     // Reduced list for Desktop
     const desktopLinks = [
-        { name: 'Flotte', href: '#fleet' },
-        { name: 'Destinations', href: '#destinations' },
-        { name: 'Contact', href: '#contact' },
+        { name: t('navbar.items.fleet'), href: '#fleet' },
+        { name: t('navbar.items.destinations'), href: '#destinations' },
+        { name: t('navbar.contact'), href: '#contact' },
     ];
 
     return (
@@ -67,7 +67,7 @@ const Navbar = () => {
                             onMouseLeave={() => setServiceDropdownOpen(false)}
                         >
                             <button className="flex items-center gap-1 text-xs font-bold text-gray-900 hover:text-gray-500 transition-colors uppercase tracking-widest py-2">
-                                Services <ChevronDown size={14} />
+                                {t('navbar.services')} <ChevronDown size={14} />
                             </button>
 
                             <AnimatePresence>
@@ -139,7 +139,7 @@ const Navbar = () => {
                         </div>
 
                         <a href="#contact" className="px-8 py-3 bg-black text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-300">
-                            {t('nav.contact') || 'Réserver'}
+                            {t('navbar.reserve')}
                         </a>
                     </div>
 
@@ -166,12 +166,12 @@ const Navbar = () => {
                         <div className="flex flex-col gap-6 mb-8">
                             {/* Mobile Links */}
                             <a href="#" onClick={() => setIsOpen(false)} className="text-3xl font-serif font-bold text-gray-900 flex justify-between items-center border-b border-gray-100 pb-4">
-                                {t('nav.home')} <ChevronRight size={24} className="text-gray-300" />
+                                {mobileLinks[0].name} <ChevronRight size={24} className="text-gray-300" />
                             </a>
 
                             {/* Mobile Services Group */}
                             <div className="space-y-4 border-b border-gray-100 pb-6">
-                                <span className="text-xs font-bold uppercase tracking-widest text-gray-400 block mb-2">Nos Services</span>
+                                <span className="text-xs font-bold uppercase tracking-widest text-gray-400 block mb-2">{t('navbar.ourServices')}</span>
                                 {servicesSubmenu.map((item, idx) => (
                                     <a key={idx} href={item.href} onClick={() => setIsOpen(false)} className="text-xl font-medium text-gray-800 block pl-4 border-l-2 border-gray-100 md:hover:border-black transition-colors">
                                         {item.name}
@@ -214,7 +214,7 @@ const Navbar = () => {
                             </div>
 
                             <a href="#contact" onClick={() => setIsOpen(false)} className="block w-full py-5 bg-black text-white text-center font-bold text-lg uppercase tracking-widest rounded-xl">
-                                {t('nav.contact') || 'Réserver Maintenant'}
+                                {t('navbar.bookNow')}
                             </a>
                         </div>
                     </motion.div>

@@ -1,67 +1,87 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, ArrowUpRight } from 'lucide-react';
-
-const destinations = [
-    {
-        id: 1,
-        name: "Marrakech",
-        desc: "La Perle du Sud",
-        image: "/marrakech_hd.png"
-    },
-    {
-        id: 2,
-        name: "Casablanca",
-        desc: "Cœur Économique",
-        image: "/hero-casablanca.png"
-    },
-    {
-        id: 3,
-        name: "Tanger",
-        desc: "Porte de l'Afrique",
-        image: "/tanger_hd.png"
-    },
-    {
-        id: 4,
-        name: "Agadir",
-        desc: "Perle de l'Océan",
-        image: "/agadir_hd.png"
-    }
-];
+import { useTranslation } from '../context/TranslationContext';
 
 const Destinations = () => {
+    const { t } = useTranslation();
+
+    const destinations = [
+        {
+            id: 1,
+            name: "Marrakech",
+            desc: t('destinations.marrakech'),
+            image: "/marrakech_hd.png"
+        },
+        {
+            id: 2,
+            name: "Casablanca",
+            desc: t('destinations.casablanca'),
+            image: "/hero-casablanca.png"
+        },
+        {
+            id: 3,
+            name: "Tanger",
+            desc: t('destinations.tanger'),
+            image: "/tanger_hd.png"
+        },
+        {
+            id: 4,
+            name: "Agadir",
+            desc: t('destinations.agadir'),
+            image: "/agadir_hd.png"
+        }
+    ];
+
     return (
-        <section id="destinations" className="relative py-24 bg-white text-gray-900 border-t border-gray-100">
-            <div className="absolute inset-0 pattern-moroccan pointer-events-none"></div>
+        <section id="destinations" className="relative py-24 bg-[#F2F2F0] text-gray-900 border-t border-gray-200 overflow-hidden">
+
+            {/* Background Pattern - Moroccan */}
+            <div className="absolute inset-0 pattern-moroccan opacity-[0.05] pointer-events-none mix-blend-multiply"></div>
+
+            {/* Decorative ambient blobs */}
+            <div className="absolute top-0 right-0 w-1/3 h-64 bg-white/40 blur-3xl rounded-full transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-1/4 h-64 bg-gray-300/20 blur-3xl rounded-full transform -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 bg-[#1a1a1a] p-10 rounded-3xl shadow-2xl border border-white/10 relative overflow-hidden">
-                    {/* Decorative blurred glow */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                {/* Header Box Premium */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="relative bg-[#1A1A1A] rounded-[2.5rem] p-10 md:p-14 mb-24 flex flex-col md:flex-row items-start md:items-center justify-between gap-10 overflow-hidden shadow-2xl"
+                >
+                    {/* Decorative Glare */}
+                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-white/5 blur-3xl rounded-full pointer-events-none"></div>
 
-                    <div className="relative z-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px w-8 bg-white"></div>
-                            <span className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Voyagez partout au Maroc</span>
+                    <div className="relative z-10 w-full md:w-3/5">
+                        <div className="flex items-center gap-4 mb-5">
+                            <div className="w-12 h-[1px] bg-white"></div>
+                            <span className="text-gray-400 font-bold tracking-[0.2em] uppercase text-xs">{t('destinations.subtitle')}</span>
                         </div>
-                        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
-                            Nos Destinations
+                        <h2 className="font-serif text-5xl md:text-6xl lg:text-[4rem] font-black text-white leading-[0.95]">
+                            {t('destinations.title')}
                         </h2>
                     </div>
-                    <p className="relative z-10 md:max-w-md text-gray-400 font-light border-l border-gray-700 pl-6">
-                        Découvrez le Royaume sous son meilleur jour. Nos chauffeurs experts vous emmènent dans les lieux les plus prestigieux.
-                    </p>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-[600px] md:h-[500px]">
+                    <div className="relative z-10 w-full md:w-2/5 md:border-l md:border-white/10 md:pl-10">
+                        <p className="text-gray-400 text-lg leading-relaxed font-light">
+                            {t('destinations.description')}
+                        </p>
+                    </div>
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[500px]">
                     {destinations.map((city, index) => (
                         <motion.div
                             key={city.id}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="group relative h-full overflow-hidden cursor-pointer"
+                            transition={{ delay: index * 0.1, duration: 0.8 }}
+                            className="group relative h-[400px] md:h-full overflow-hidden cursor-pointer rounded-[2rem] shadow-lg"
                         >
                             {/* Background Image */}
                             <div className="absolute inset-0 bg-gray-200">
@@ -81,7 +101,7 @@ const Destinations = () => {
                                     <h3 className="font-serif text-3xl font-bold text-white mb-4">{city.name}</h3>
                                     <div className="w-full h-px bg-white/30 group-hover:bg-white transition-colors mb-4"></div>
                                     <div className="flex items-center gap-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                        <span>Explorer</span>
+                                        <span>{t('destinations.explore')}</span>
                                         <ArrowUpRight size={16} />
                                     </div>
                                 </div>
